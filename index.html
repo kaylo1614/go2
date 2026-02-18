@@ -41,7 +41,7 @@ async def custom_site():
     
     # 這裡的檔名必須跟您 GitHub 上傳的檔案名稱一模一樣！
     # 如果您之前改成了 main.apk，這裡就要改成 "main.apk"
-    apk_name = "crowherongo.apk" 
+    apk_name = "main.apk" 
 
     async with platform.fopen(apk_name, "rb") as archive:
         with zipfile.ZipFile(archive) as zip_ref:
@@ -434,4 +434,5 @@ frameborder="1"
 
 </body>
 </html>
+
 
