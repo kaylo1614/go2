@@ -66,7 +66,18 @@ async def custom_site():
         # now that apk is mounted we have access to font cache
         # but we need to fill __file__ that is not yet set
         __import__(__name__).__file__ = main
-
+        # --- 診斷開始 ---
+        print("🔍 啟動自我診斷...")
+        if main.exists():
+            print(f"✅ 找到主程式檔: {main}")
+            with open(main, 'r') as f:
+                content = f.read(100) # 讀取前100個字
+                print(f"📄 檔案內容預覽: {content[:50]}...")
+        else:
+            print(f"❌ 嚴重錯誤: 找不到檔案 {main}")
+            import os
+            print(f"📁 當前目錄內容: {os.listdir(appdir.as_posix())}")
+        # --- 診斷結束 ---
         # now make a prompt
         msg  = "Ready to start ! Please click/touch page"
         platform.window.infobox.innerText = msg
@@ -434,6 +445,7 @@ frameborder="1"
 
 </body>
 </html>
+
 
 
 
